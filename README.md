@@ -26,6 +26,14 @@ C:\path\to\new\virtual\environment\bin\activate.bat
 pip install -r requirements.txt
 ```
 
+For docker
+```
+git clone https://github.com/davidejones/netlify-cms-oauth-provider-python.git
+cd netlify-cms-oauth-provider-python
+docker build -t netlifycms-oauth .
+```
+Or just [Run it with Docker](https://github.com/WingLim/netlify-cms-oauth-provider-python#4-run-it-with-docker)
+
 ## 2) Config
 
 ### Auth Provider Config
@@ -66,3 +74,23 @@ backend:
 With your virtual environment activated run the server as follows
 
 `python main.py`
+
+## 4) Run it with Docker
+
+**Run with .env file:**
+
+```
+docker run -itd \
+    -v /your/path/.env:/usr/src/app/.env \
+    -p 7676:80 \
+    winglim/netlifycms-oauth
+```
+
+**Run with environment variables:**
+
+```
+docker run -itd \
+    -e OAUTH_CLIENT_ID=12345 OAUTH_CLIENT_SECRET=balabala \
+    -p 7676:80 \
+    winglim/netlifycms-oauth
+```
